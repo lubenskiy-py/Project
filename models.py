@@ -10,7 +10,7 @@ class Worker(db.Model):
     surname = db.Column(db.String, unique=False, nullable=False)
     nickname = db.Column(db.String, unique=True, nullable=False)
     email = db.Column(db.String, unique=True, nullable=False)
-    bank_card = db.Column(db.String, unique=True, nullable=False)
+    password = db.Column(db.String, nullable=False)
 
 
 class Manager(db.Model):
@@ -19,3 +19,4 @@ class Manager(db.Model):
     surname = db.Column(db.String, unique=False, nullable=False)
     nickname = db.Column(db.String, unique=True, nullable=False)
     email = db.Column(db.String, unique=True, nullable=False)
+    password = db.Column(db.String, nullable=False)

@@ -1,5 +1,5 @@
 from wtforms.validators import DataRequired, Email, Length
-from wtforms import StringField, IntegerField, SubmitField
+from wtforms import StringField, IntegerField, SubmitField, PasswordField
 from flask_wtf import FlaskForm
 
 
@@ -8,7 +8,7 @@ class WorkerForm(FlaskForm):
     surname = StringField("Прізвище", validators=[DataRequired()])
     nickname = StringField("Нікнейм", validators=[DataRequired()])
     email = StringField("Email", validators=[DataRequired(), Email()])
-    bank_card = IntegerField("Номер банківської карти", validators=[DataRequired(), Length(min=16, max=16)])
+    password = PasswordField("Пароль", validators=[DataRequired()])
     submit = SubmitField("Зарееструватися")
 
 
@@ -17,4 +17,5 @@ class ManagerForm(FlaskForm):
     surname = StringField("Прізвище", validators=[DataRequired()])
     nickname = StringField("Нікнейм", validators=[DataRequired()])
     email = StringField("Email", validators=[DataRequired(), Email()])
+    password = PasswordField("Пароль", validators=[DataRequired()])
     submit = SubmitField("Зарееструватися")
