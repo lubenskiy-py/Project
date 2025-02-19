@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Реестрація</title>
+    <link rel="stylesheet" href="/static/style_register.css">
+</head>
+<body>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        <p>{{ form.name.label }} {{ form.name() }}</p>
+        <p>{{ form.surname.label }} {{ form.surname() }}</p>
+        <p>{{ form.nickname.label }} {{ form.nickname() }}</p>
+        <p>{{ form.email.label }} {{ form.email() }}</p>
+        <p>{{ form.password.label }} {{ form.password() }}</p>
+        <p>{{ form.submit() }}</p>
+    </form>
+</body>
+</html>
