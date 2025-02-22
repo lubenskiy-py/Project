@@ -27,10 +27,10 @@ def add_worker():
     form = WorkerForm()
     if form.validate_on_submit():
         worker = Worker(
-            name=form.name.data,
-            surname=form.surname.data,
-            nickname=form.nickname.data,
-            email=form.email.data,
+            name = form.name.data,
+            surname = form.surname.data,
+            nickname = form.nickname.data,
+            email = form.email.data,
             password = form.password.data
         )
         db.session.add(worker)
@@ -38,27 +38,21 @@ def add_worker():
     return render_template("register_worker.html", form=form)
 
 
-# ATTENTION!!!
-# DANGER ZONE BEVELOW!!!
-# THE LEVEL OF BUGS IS OVERHEAD!!!
 @app.route("/register_manager", methods=["GET", "POST"])
 def add_manager():
     form = ManagerForm()
-    print(form.password.data)
     if form.validate_on_submit:
-        existing_worker = Worker.query.filter_by(email=form.email.data).first()
-        if existing_worker:
-            flash("Цей email вже використовується")
-        else:
-            manager = Manager(
-                name = form.name.data,
-                surname = form.surname.data,
-                nickname = form.nickname.data,
-                email = form.email.data,
-                password = generate_password_hash(form.password.data)
-            )
-            db.session.add(manager)
-            db.session.commit()
+        password_hash = generate_password_hash(form.password.data)
+        manager = Manager(
+            name = form.name.data,
+            surname = form.surname.data,
+            nickname = form.nickname.data,
+            email = form.email.data,
+            password = password_hash
+        )
+        db.session.add(manager)
+        db.session.commit()
+        flash("Ви успішно зареєструвались")
     return render_template("register_manager.html", form=form)
 
 
