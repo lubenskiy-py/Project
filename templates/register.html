@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<body>
+    <h2>Реєстрація</h2>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+
+        <div>
+            <label for="name">Ім'я:</label>
+            {{ form.name() }}
+        </div>
+
+        <div>
+            <label for="surname">Прізвище:</label>
+            {{ form.surname() }}
+        </div>
+
+        <div>
+            <label for="nickname">Нікнейм:</label>
+            {{ form.nickname() }}
+        </div>
+
+        <div>
+            <label for="email">Email:</label>
+            {{ form.email() }}
+        </div>
+
+        <div>
+            <label for="password">Пароль:</label>
+            {{ form.password() }}
+        </div>
+
+        <div>
+            <label for="role">Роль:</label>
+            {{ form.role(class="form-control") }}
+        </div>
+
+        <div>
+            <button type="submit">Зареєструватися</button>
+        </div>
+    </form>
+</body>
+</html>
+
+{% endblock %}

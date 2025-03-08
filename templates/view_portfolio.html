@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Деталі портфоліо</h1>
+    <p><strong>{{ portfolio.user.name }} {{ portfolio.user.surname }}</strong></p>
+    <p><strong>Посада:</strong> {{ portfolio.position }}</p>
+    <p><strong>Категорія:</strong> {{ portfolio.category }}</p>
+    <p><strong>Країна:</strong> {{ portfolio.country }}</p>
+    <p><strong>Досвід роботи:</strong> {{ portfolio.work_exp }} років</p>
+    <p><strong>Бажана зарплата:</strong> ${{ portfolio.salary_expectation }}</p>
+    <p><strong>Рівень англійської:</strong> {{ portfolio.english_level }}</p>
+    <p><strong>Навички:</strong> {{ portfolio.skills }}</p>
+    <p><strong>Знання української:</strong> {% if portfolio.knowledge_ukrainian %}Так{% else %}Ні{% endif %}</p>
+{% endblock %}

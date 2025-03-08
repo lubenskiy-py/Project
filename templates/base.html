@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Портфоліо</title>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('register') }}">Реєстрація</a></li>
+            <li><a href="{{ url_for('login') }}">Увійти</a></li>
+            {% if current_user.is_authenticated %}
+                <li><a href="{{ url_for('manager_dashboard') }}">Панель управління менеджера</a></li>
+                <li><a href="{{ url_for('worker_profile') }}">Профiль робiтника</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+
+    <div>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul>
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+    </div>
+
+    {% block content %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Профіль працівника</h1>
+
+    {% if portfolio %}
+        <h2>Ваше портфоліо</h2>
+        <p><strong>Посада:</strong> {{ portfolio.position }}</p>
+        <p><strong>Категорія:</strong> {{ portfolio.category }}</p>
+        <p><strong>Країна:</strong> {{ portfolio.country }}</p>
+        <p><strong>Досвід роботи:</strong> {{ portfolio.work_exp }} років</p>
+        <p><strong>Бажана зарплата:</strong> ${{ portfolio.salary_expectation }}</p>
+        <p><strong>Рівень англійської:</strong> {{ portfolio.english_level }}</p>
+        <p><strong>Навички:</strong> {{ portfolio.skills | replace(',', ', ') }}</p>
+        <p><strong>Розмовляю українською:</strong> {% if portfolio.knowledge_ukrainian %}Так{% else %}Ні{% endif %}</p>
+
+        <a href="{{ url_for('portfolio') }}">Редагувати портфоліо</a>
+    {% else %}
+        <p>У вас ще немає портфоліо.</p>
+        <a href="{{ url_for('portfolio') }}">Створити портфоліо</a>
+    {% endif %}
+{% endblock %}

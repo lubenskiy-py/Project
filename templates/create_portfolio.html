@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h2>Створення портфоліо</h2>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+
+        <div class="form-group">
+            {{ form.position.label }}
+            {{ form.position(class="form-control") }}
+        </div>
+
+        <div class="form-group">
+            {{ form.category.label }}
+            {{ form.category(class="form-control") }}
+        </div>
+
+        <div class="form-group">
+            {{ form.country.label }}
+            {{ form.country(class="form-control") }}
+        </div>
+
+        <div class="form-group">
+            {{ form.work_exp.label }}
+            {{ form.work_exp(class="form-control") }}
+        </div>
+
+        <div class="form-group">
+            {{ form.money_want.label }}
+            {{ form.money_want(class="form-control") }}
+        </div>
+
+        <div class="form-group">
+            {{ form.english_level.label }}
+            <div>
+                {% for subfield in form.english_level %}
+                    <div class="form-check">
+                        {{ subfield(class="form-check-input", id=subfield.id) }}
+                        <label class="form-check-label" for="{{ subfield.id }}">{{ subfield.label.text }}</label>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="form-group">
+            {{ form.skills.label }}
+            <select name="skills" multiple>
+                {% for choice in form.skills.choices %}
+                    <option value="{{ choice[0] }}" {% if form.skills.data and choice[0] in form.skills.data %}selected{% endif %}>
+                        {{ choice[1] }}
+                    </option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="form-group form-check">
+            {{ form.knowledge_ukrainian(class="form-check-input", id="knowledge_ukrainian") }}
+            <label class="form-check-label" for="knowledge_ukrainian">{{ form.knowledge_ukrainian.label.text }}</label>
+        </div>
+
+        <button type="submit" class="btn btn-primary">{{ form.submit.label }}</button>
+    </form>
+</div>
+{% endblock %}
