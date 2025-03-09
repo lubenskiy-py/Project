@@ -32,11 +32,11 @@ def register():
     if form.validate_on_submit():
         hashed_password = generate_password_hash(form.password.data, method = 'pbkdf2:sha256')
         user = User(
-            name=form.name.data,
-            surname=form.surname.data,
-            email=form.email.data,
-            password=hashed_password,
-            role=form.role.data
+            name = form.name.data,
+            surname = form.surname.data,
+            email = form.email.data,
+            password = hashed_password,
+            role = form.role.data
         )
         db.session.add(user)
         db.session.commit()
@@ -49,7 +49,7 @@ def register():
 def login():
     form = LoginForm()
     if form.validate_on_submit():
-        user = User.query.filter_by(email=form.email.data).first()
+        user = User.query.filter_by(email = form.email.data).first()
         if user and check_password_hash(user.password, form.password.data):
             login_user(user)
             flash('Вхід успішний!')
@@ -78,7 +78,7 @@ def portfolio():
     if current_user.role != "worker":
         flash("У вас немає доступу до цієї сторінки")
         return redirect(url_for("homepage"))
-    portfolio = Portfolio.query.filter_by(user_id=current_user.id).first()
+    portfolio = Portfolio.query.filter_by(user_id = current_user.id).first()
     form = PortfolioForm(obj=portfolio)
     if form.validate_on_submit():
         if portfolio:

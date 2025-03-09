@@ -15,6 +15,7 @@
                 <p><strong>Рівень англійської:</strong> {{ portfolio.english_level }}</p>
                 <p><strong>Навички:</strong> {{ portfolio.skills }}</p>
                 <p><strong>Знання української:</strong> {% if portfolio.knowledge_ukrainian %}Так{% else %}Ні{% endif %}</p>
+                <p><strong>Email:</strong> {{ portfolio.user.email }}</p>
                 <hr>
             </div>
         {% endfor %}

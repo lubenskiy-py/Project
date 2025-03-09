@@ -35,8 +35,8 @@ class PortfolioForm(FlaskForm):
                  ("it", "Італія"), ("nl", "Нідерланди")],
         validators=[DataRequired()]
     )
-    work_exp = IntegerField("Досвід роботи", validators=[NumberRange(min=0)], default=0)
-    money_want = IntegerField("Бажана зарплата ($)", validators=[DataRequired()])
+    work_exp = IntegerField("Досвід роботи", validators=[NumberRange(min=0, max=80)], default=0)
+    money_want = IntegerField("Бажана зарплата ($)", validators=[DataRequired(), NumberRange(min=0, max=100000)])
     english_level = RadioField(
         "Рівень англійської",
         choices=[("no", "No English"), ("beginner", "Beginner/Elementary"), ("pre-int", "Pre-Intermediate"),
